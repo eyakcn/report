@@ -1,29 +1,30 @@
 const React = require("react");
+const ReactDOM = require("react-dom");
 const $ = require("jquery");
 
 /* eslint no-unused-vars: 0 */
 const App = React.createClass({
-    render() {
-        return (
-            <h1>Hello {this.state.name}</h1>
-        );
-    },
+  render() {
+    return (
+      <h1>Hello {this.state.name}</h1>
+    );
+  },
 
-    getInitialState() {
-        return {name: "World"};
-    },
+  getInitialState() {
+    return {name: "World"};
+  },
 
-    componentDidMount() {
-        $.ajax({
-            url: 'hello',
-            data: {name: 'React'}
-        }).done(json => {
-            this.setState({name: json.name});
-        });
-    }
+  componentDidMount() {
+    $.ajax({
+      url: 'hello',
+      data: {name: 'React'}
+    }).done(json => {
+      this.setState({name: json.name});
+    });
+  }
 });
 
-React.render(
-    <App/>,
-    document.getElementById('app')
+ReactDOM.render(
+  <App/>,
+  document.getElementById('app')
 );
