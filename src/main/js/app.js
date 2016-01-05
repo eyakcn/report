@@ -17,7 +17,9 @@ const App = React.createClass({
   componentDidMount() {
     $.ajax({
       url: 'hello',
-      data: {name: 'React'}
+      data: {
+        name: 'Hefun'
+      }
     }).done(json => {
       this.setState({name: json.name});
     });

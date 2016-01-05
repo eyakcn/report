@@ -1,12 +1,10 @@
 var path = require('path');
 
 module.exports = {
-  entry: [
-    './src/main/js/app.js',
-    './src/main/js/report.js'
-  ],
+  context: __dirname + '/src/main/js',
+  entry: ['./app.js', './report.js'],
   devtool: 'sourcemaps',
-  cache: true,
+  cache: false,
   debug: true,
   output: {
     path: __dirname,
@@ -14,8 +12,14 @@ module.exports = {
   },
   module: {
     loaders: [
-      {test: path.join(__dirname, 'src/main/js'), loader: 'babel-loader'},
-      {test: path.join(__dirname, 'src/main/js'), loader: 'eslint-loader'}
+      {
+        test: path.join(__dirname, 'src/main/js'),
+        loader: 'babel'
+      },
+      {
+        test: path.join(__dirname, 'src/main/js'),
+        loader: 'eslint-loader'
+      }
     ]
   }
 };
