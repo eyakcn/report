@@ -1,5 +1,6 @@
 {
   "name": "hefun-report",
+  "private": true,
   "version": "1.0.0",
   "description": "Hefun Report",
   "main": "src/main/js/app.js",
@@ -8,7 +9,10 @@
     "url": "https://github.com/eyakcn/report"
   },
   "scripts": {
-    "build": "mvn -q clean compile && npm install && webpack",
+    "buildAll": "mvn -q clean compile && npm install && webpack",
+    "watch": "webpack --watch -d",
+    "prebuild": "npm install",
+    "build": "webpack -d",
     "serve": "mvn -q clean spring-boot:run",
     "all": "npm install && webpack && mvn -q clean spring-boot:run"
   },
@@ -17,12 +21,25 @@
     "babel-loader": "^6.2.1",
     "babel-preset-es2015": "^6.3.13",
     "babel-preset-react": "^6.3.13",
+    "babel-preset-stage-0": "^6.3.13",
     "babel-preset-stage-3": "^6.3.13",
+    "css-loader": "^0.23.1",
+    "eslint": "^1.10.3",
+    "eslint-loader": "^1.2.0",
+    "file-loader": "^0.8.5",
+    "font-loader": "^0.1.2",
+    "html-loader": "^0.4.0",
     "jquery": "^2.1.4",
+    "json-loader": "^0.5.4",
+    "less-loader": "^2.2.2",
+    "ng-annotate-webpack-plugin": "^0.1.2",
     "react": "^0.14.5",
     "react-dom": "^0.14.5",
-    "webpack": "^1.12.9",
-    "eslint": "^1.10.3",
-    "eslint-loader": "^1.2.0"
+    "sass-loader": "^3.1.2",
+    "style-loader": "^0.13.0",
+    "svg-loader": "0.0.2",
+    "transform-loader": "^0.2.3",
+    "url-loader": "^0.5.7",
+    "webpack": "^1.12.9"
   }
 }

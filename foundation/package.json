@@ -1,5 +1,6 @@
 {
   "name": "foundation-sites",
+  "private": true,
   "version": "5.5.3",
   "main": "js/foundation/foundation.js",
   "scripts": {
