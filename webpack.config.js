@@ -1,5 +1,6 @@
 var path = require('path');
-var ngAnnotatePlugin = require('ng-annotate-webpack-plugin');
+var NgAnnotatePlugin = require('ng-annotate-webpack-plugin');
+var ExtractTextPlugin = require("extract-text-webpack-plugin");
 
 module.exports = {
   context: path.join(__dirname, 'src/main/js'),
@@ -19,7 +20,10 @@ module.exports = {
       {test: /\.jsx$/, loader: 'babel'},
       {test: /\.less$/, loader: 'style!css!less'},
       {test: /\.scss$/, loader: 'style!css!sass'},
-      {test: /\.css$/, loader: 'style!css'},
+      {
+        test: /\.css$/, 
+        loader: ExtractTextPlugin.extract("style-loader", "css-loader")
+      },
 
       // **IMPORTANT** This is needed so that each bootstrap js file required by
       // bootstrap-webpack has access to the jQuery object
@@ -35,8 +39,11 @@ module.exports = {
     ]
   },
   plugins: [
-    new ngAnnotatePlugin({
+    new NgAnnotatePlugin({
       add: true
+    }),
+    new ExtractTextPlugin("bundle.css", {
+      allChunks: true
     })
   ]
 };
